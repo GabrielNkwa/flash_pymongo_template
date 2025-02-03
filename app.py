@@ -35,11 +35,11 @@ def shh():
 @app.route('/loadpic/<pic>')
 def gsg(pic):
     fid = mongo.db.fs.files.find_one({'filename':pic})
-    id = fid{'_id'}
+    id = fid['_id']
     img_path = mongo.db.fs.chunks.find_one({'files_id': fid['_id']})
     return img_path['data']
 
 
 if __name__ == "__main__":
     webbrowser.open('http://localhost:5000')
-    app.run('0.0.0.0')
+    app.run('0.0.0.0', debug=True)
